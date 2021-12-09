@@ -1,20 +1,4 @@
 const fs = require('fs')
-let permMap = {}
-
-const map = {
-  0: 'abcefg',
-  1: 'cf',
-  2: 'acdeg',
-  3: 'acdfg',
-  4: 'bcdf',
-  5: 'abdfg',
-  6: 'abdefg',
-  7: 'acf',
-  8: 'abcdefg',
-  9: 'abcdfg',
-}
-
-
 
 const reverse = function(map) {
   return Object.keys(map).reduce((r, k) => {
@@ -22,40 +6,6 @@ const reverse = function(map) {
     return r;
   }, {})
 }
-
-
-// const jumbled = {
-//   'a': 'd',
-//   'b': 'f',
-//   'c': 'a',
-//   'd': 'e',
-//   'e': 'g',
-//   'f': 'b',
-//   'g': 'c',
-// }
-
-// const given = {
-//   0: 'cagedb',
-//   1: 'ab',
-//   2: 'gcdfa',
-//   3: 'fbcad',
-//   4: 'eafb',
-//   5: 'cdfbe',
-//   6: 'cdfgeb',
-//   7: 'dab',
-//   8: 'acedgfb',
-//   9: 'cefabd',
-// }
-// const newMap = Object.keys(given).reduce((m, k) => {
-//   m[k] = sort(given[k])
-//   return m;
-// }, {})
-
-// const lookup = Object.keys(newMap).reduce((r, k) => {
-//   r[newMap[k]] = Number(k);
-//   return r;
-// }, {})
-
 fs.readFile('d8.txt', 'utf8' , (err, data) => {
   if (err) {
     console.error(err)
@@ -68,7 +18,6 @@ fs.readFile('d8.txt', 'utf8' , (err, data) => {
 
   console.log(temp.reduce((s,a)=> a+s), 0);
 })
-
 
 function parseNote(line) {
   let pos = { 5: [], 6: []}
@@ -113,7 +62,6 @@ function parseNote(line) {
   }, {})
 
   return Number(line[1].map(l => {
-    // console.log(l, sort(l), lookup[sort(l)])
     return lookup[sort(l)]
   }).join(''))
 }
