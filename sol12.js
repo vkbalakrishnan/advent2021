@@ -46,10 +46,3 @@ function maxLowerCase(path) {
   }, {})
   return Math.max(...Object.values(counts))
 }
-
-function flat(p) {
-  if(typeof p === 'object' && typeof p[0] === 'string') {
-    return p
-  }
-  return p.reduce((arr,m) => arr.concat(flat(m)), [])
-}
